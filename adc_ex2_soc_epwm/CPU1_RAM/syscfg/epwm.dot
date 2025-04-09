@@ -1,0 +1,508 @@
+digraph {
+    graph [fontname = "helvetica"];
+    node  [fontname = "helvetica"];
+    edge  [fontname = "helvetica"];
+    graph [mclimit=50 nodesep=0.5 rankdir=LR ranksep=1.25]
+                   
+    EPWMXBAR [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwmxbar_title' ROWSPAN='9'><br/><br/>  EPWM XBAR<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='trip4'>TRIP4</TD></TR>
+                       <TR><TD PORT='trip5'>TRIP5</TD></TR>
+                       <TR><TD PORT='trip7'>TRIP7</TD></TR>
+                       <TR><TD PORT='trip8'>TRIP8</TD></TR>
+                       <TR><TD PORT='trip9'>TRIP9</TD></TR>
+                       <TR><TD PORT='trip10'>TRIP10</TD></TR>
+                       <TR><TD PORT='trip11'>TRIP11</TD></TR>
+                       <TR><TD PORT='trip12'>TRIP12</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+       
+    subgraph cluster_epwm8 {
+        label = "EPWM8 = myEPWM0";
+        color=red;
+        
+        
+        epwm8_TB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                        <TR><TD PORT='' COLSPAN='3'><br/><br/>  Time Base <br/><br/><br/></TD></TR>
+                        <TR><TD PORT='epwm8_syncin'>SYNCIN</TD><TD ROWSPAN='3'>Emulation Mode: EPWM_EMULATION_STOP_AFTER_NEXT_TB<br align="left" />Time Base Clock Divider: EPWM_CLOCK_DIVIDER_1<br align="left" />High Speed Clock Divider: EPWM_HSCLOCK_DIVIDER_1<br align="left" />Time Base Period Load Mode: EPWM_PERIOD_SHADOW_LOAD<br align="left" />Time Base Period Load Event: EPWM_SHADOW_LOAD_MODE_COUNTER_ZERO<br align="left" />Time Base Period: 500<br align="left" />Time Base Period Link: EPWM_LINK_WITH_DISABLE<br align="left" />Enable Time Base Period Global Load: true<br align="left" />Initial Counter Value: 0<br align="left" />Counter Mode: EPWM_COUNTER_MODE_UP_DOWN<br align="left" />Counter Mode After Sync: EPWM_COUNT_MODE_DOWN_AFTER_SYNC<br align="left" />Enable Phase Shift Load: false<br align="left" />Phase Shift Value: 0<br align="left" />Force a Sync Pulse: false<br align="left" />Sync In Pulse Source: EPWM_SYNC_IN_PULSE_SRC_DISABLE<br align="left" />Sync Out Pulse: EPWM_SYNC_OUT_PULSE_ON_CNTR_ZERO<br align="left" />One-Shot Sync Out Trigger: EPWM_OSHT_SYNC_OUT_TRIG_SYNC<br align="left" />EPWMxSYNCPER Source Select: HRPWM_PWMSYNC_SOURCE_PERIOD<br align="left" /></TD><TD PORT='epwm8_tb_prd'>CTR==PRD</TD></TR>
+                        <TR><TD PORT='epwm8_syncout'>SYNCOUT</TD><TD COL='3' PORT='epwm8_tb_zero'>CTR==ZRO</TD></TR>
+                        <TR><TD PORT=''>Digital Compare sync</TD><TD COL='3' PORT='epwm8_tb_dir'>CTR_DIR</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+        
+        epwm8_DC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_dc_title' COLSPAN='3'><br/><br/>  EPWM Digital Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm8_dcah'>DCAH</TD><TD ROWSPAN='12'>Digital Compare A High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A High): <br align="left" />Digital Compare A Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A Low): <br align="left" />Condition For Digital Compare output 1 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCAEVT1): false<br align="left" />Generate SYNCOUT (DCAEVT1): false<br align="left" />Synch Mode (DCAEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCAEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare B High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B High): <br align="left" />Digital Compare B Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B Low): <br align="left" />Condition For Digital Compare output 1 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCBEVT1): false<br align="left" />Generate SYNCOUT (DCBEVT1): false<br align="left" />Synch Mode (DCBEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCBEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare Filter Input (DCEVTFILT event source): EPWM_DC_WINDOW_SOURCE_DCAEVT1<br align="left" />Use Blanking Window: false<br align="left" />Blanking Window Start Event: EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />Blanking Window Offset from the Start Event: 0<br align="left" />Blanking Window Length: 0<br align="left" />Invert Blanking Window: false<br align="left" />Use DC Counter Capture: false<br align="left" />Enable DC Counter Capture Shadow Mode: false<br align="left" />DC Counter Capture Re-Enable Event\Shadow Load Event (Blanking Window Start Event): EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />DC Counter Capture Independent Pulse Selection: false<br align="left" />Use Edge Filter: false<br align="left" />Edge Filter Mode: EPWM_DC_EDGEFILT_MODE_RISING<br align="left" />Edge Filter Edge Count: EPWM_DC_EDGEFILT_EDGECNT_0<br align="left" />Enable Edge Filter Reset/Enable Valley Capture: false<br align="left" />Edge Filter Counter Reset/Valley Capture Signal Source: EPWM_VALLEY_TRIGGER_EVENT_SOFTWARE<br align="left" />Start Valley Capture Logic: false<br align="left" />Start Valley Capture: 0<br align="left" />Stop Valley Capture: 0<br align="left" />Select the delayed output (by HWDELVAL) of the Edge Filter: false<br align="left" />SWVDELVAL (software valley delay value): 0<br align="left" />Valley Delay Divider: EPWM_VALLEY_DELAY_MODE_SW_DELAY<br align="left" /></TD><TD COL='3' PORT='epwm8_dcaevt1frc'>DCAEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm8_dcal'>DCAL</TD>                                 <TD COL='3' PORT=''>DCAEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCAEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.soc</TD></TR>
+                       <TR><TD PORT='epwm8_dcbh'>DCBH</TD>                                 <TD PORT='epwm8_dcbevt1frc'>DCBEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm8_dcbl'>DCBL</TD>                                 <TD PORT=''>DCBEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCBEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.soc</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+
+        epwm8_CC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_cc_title' COLSPAN='3'><br/><br/>  EPWM Counter Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='' COLSPAN='2' ROWSPAN='4'>Counter Compare A (CMPA): 250<br align="left" />Enable Counter Compare A (CMPA) Global Load: true<br align="left" />Enable Shadow Counter Compare A (CMPA): true<br align="left" />Counter Compare A Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare A (CMPA) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare B (CMPB): 0<br align="left" />Enable Counter Compare B (CMPB) Global Load: false<br align="left" />Enable Shadow Counter Compare B (CMPB): true<br align="left" />Counter Compare B Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare B (CMPB) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare C (CMPC): 0<br align="left" />Enable Counter Compare C (CMPC) Global Load: false<br align="left" />Enable Shadow Counter Compare C (CMPC): true<br align="left" />Counter Compare C Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare C (CMPC) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare D (CMPD): 0<br align="left" />Enable Counter Compare D (CMPD) Global Load: false<br align="left" />Enable Shadow Counter Compare D (CMPD): true<br align="left" />Counter Compare D Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare D (CMPD) Link: EPWM_LINK_WITH_DISABLE<br align="left" /></TD><TD COL='3' PORT='epwm8_cc_cmpa'>CTR == CMPA</TD></TR>
+                       <TR><TD COL='3' PORT='epwm8_cc_cmpb'>CTR == CMPB</TD></TR>
+                       <TR><TD COL='3' PORT='epwm8_cc_cmpc'>CTR == CMPC</TD></TR>
+                       <TR><TD COL='3' PORT='epwm8_cc_cmpd'>CTR == CMPD</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm8_AQ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_aq_title' COLSPAN='3'><br/><br/>  EPWM Action Qualifier<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm8_aq_prd'>PRD</TD><TD PORT='' ROWSPAN='7'>Enable Continuous SW Force Global Load: false<br align="left" />Continuous SW Force Shadow Mode: EPWM_AQ_SW_SH_LOAD_ON_CNTR_ZERO<br align="left" />T1 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />T2 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />ePWMxA Global Load Enable: false<br align="left" />ePWMxA Shadow Mode Enable: false<br align="left" />ePWMxA Shadow Load Event: EPWM_AQ_LOAD_ON_CNTR_ZERO<br align="left" />ePWMxA One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxA  Time base counter equals zero: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  Time base counter equals period: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Global Load Enable: true<br align="left" />ePWMxB Shadow Mode Enable: true<br align="left" />ePWMxB Shadow Load Event: EPWM_AQ_LOAD_ON_CNTR_ZERO<br align="left" />ePWMxB One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxB  Time base counter equals zero: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter equals period: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" /></TD><TD COL='3' PORT='epwm8_aq_epwma'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm8_aq_zero'>ZERO</TD>                                    <TD COL='3' PORT='epwm8_aq_epwmb'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm8_aq_dir'>DIR</TD>                                    </TR>
+                       <TR><TD PORT='epwm8_aq_t1'>T1</TD>                                    </TR>
+                       <TR><TD PORT='epwm8_aq_t2'>T2</TD>                                    </TR>
+                       <TR><TD PORT='epwm8_aq_cmpa'>CMPA</TD>                                    </TR>
+                       <TR><TD PORT='epwm8_aq_cmpb'>CMPB</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm8_DB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_db_title' COLSPAN='3'><br/><br/>  EPWM Deadband<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm8_db_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Active High: undefined<br align="left" />Active Low: undefined<br align="left" />Active High Complementary: undefined<br align="left" />Active Low Complementary: undefined<br align="left" />Dual Edge Delay Mode: undefined<br align="left" />Rising Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Falling Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Rising Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_HIGH<br align="left" />Falling Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_LOW<br align="left" />Enable Rising Edge Delay: true<br align="left" />RED Shadow Load Event: EPWM_RED_LOAD_ON_CNTR_ZERO<br align="left" />Rising Edge Delay Value: 16380<br align="left" />Enable Falling Edge Delay: true<br align="left" />FED Shadow Load Event: EPWM_FED_LOAD_ON_CNTR_ZERO<br align="left" />Falling Edge Delay Value: 16380<br align="left" />Swap Output for EPWMxA: false<br align="left" />Swap Output for EPWMxB: false<br align="left" />Enable Deadband Control Global Load: false<br align="left" />Deadband Control Shadow Load Event: EPWM_DB_LOAD_ON_CNTR_ZERO<br align="left" />Enable Deadband Control Shadow Mode: false<br align="left" />Enable RED Global Load: false<br align="left" />Enable RED Shadow Mode: false<br align="left" />Enable FED Global Load: false<br align="left" />Enable FED Shadow Mode: false<br align="left" />Dead Band Counter Clock Rate: EPWM_DB_COUNTER_CLOCK_FULL_CYCLE<br align="left" /></TD><TD COL='3' PORT='epwm8_db_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm8_db_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm8_db_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm8_PC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_pc_title' COLSPAN='3'><br/><br/>  EPWM Chopper<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm8_pc_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Use Chopper: false<br align="left" />Chopper Duty Cycle: 0<br align="left" />Chopper Frequency: 0<br align="left" />Chopper First Pulse Width: 0<br align="left" /></TD><TD COL='3' PORT='epwm8_pc_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm8_pc_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm8_pc_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm8_TZ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_tz_title' COLSPAN='3'><br/><br/>  EPWM Trip-Zone<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm8_tz_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='4'>Use Advanced EPWM Trip Zone Actions: false<br align="left" />TZA Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZB_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />One-Shot Source: <br align="left" />CBC Source: <br align="left" />CBC Latch Clear Signal: EPWM_TZ_CBC_PULSE_CLR_CNTR_ZERO<br align="left" />TZ Interrupt Source (ORed): <br align="left" />Register Interrupt Handler: false<br align="left" /></TD><TD COL='3' PORT='epwm8_tz_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm8_tz_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm8_tz_epwmb_out'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm8_tz_int'>TZINT</TD>                                    </TR>
+                       <TR><TD PORT='epwm8_tz_dcforce'>Digital Compare force</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm8_ET [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm8_et_title' COLSPAN='3'><br/><br/>  EPWM Event Trigger<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm8_et_tb'>Timebase Signals</TD><TD PORT='' ROWSPAN='3'>Enable EPWM Interrupt: false<br align="left" />Register Interrupt Handler: false<br align="left" />Interrupt Event Sources: EPWM_INT_TBCTR_DISABLED<br align="left" />Interrupt Event Count: 0<br align="left" />Interrupt Event Count Initial Value Load Enable: false<br align="left" />Interrupt Event Count Initial Value: 0<br align="left" />Force Interrupt Event Count Initial Value: false<br align="left" />SOCA Trigger Enable: true<br align="left" />SOCA Trigger Source: EPWM_SOC_TBCTR_U_CMPA<br align="left" />SOCA Trigger Event Count: 1<br align="left" />SOCA Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCA Trigger Event Count Initial Value: 0<br align="left" />Force SOCA Trigger Event Count Initial Value: false<br align="left" />SOCB Trigger Enable: true<br align="left" />SOCB Trigger Source: EPWM_SOC_TBCTR_D_CMPA<br align="left" />SOCB Trigger Event Count: 1<br align="left" />SOCB Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCB Trigger Event Count Initial Value: 0<br align="left" />Force SOCB Trigger Event Count Initial Value: false<br align="left" /></TD><TD COL='3' PORT='epwm8_et_int'>INT</TD></TR>
+                       <TR><TD PORT='epwm8_et_cc'>Counter Compare Signals</TD>                                    <TD COL='3' PORT='epwm8_et_soca'>SOCA</TD></TR>
+                       <TR><TD PORT='epwm8_et_dc'>Digital Compare Signals</TD>                                    <TD COL='3' PORT='epwm8_et_socb'>SOCB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        {rank=same epwm8_TB; epwm8_CC};
+        {rank=same epwm8_TZ; epwm8_DC};
+        {rank=same epwm8_DB; epwm8_ET};
+    }
+
+    epwm8_TB:s -> epwm8_CC:n [label="TBCTR"];
+    epwm8_DC:n -> epwm8_TZ:epwm8_tz_dcforce:s;
+
+
+    epwm8_TB:epwm8_tb_prd:e -> epwm8_AQ:epwm8_aq_prd:w;
+    epwm8_TB:epwm8_tb_zero:e -> epwm8_AQ:epwm8_aq_zero:w;
+    epwm8_TB:epwm8_tb_dir:e -> epwm8_AQ:epwm8_aq_dir:w;
+    epwm8_CC:epwm8_cc_cmpa:e -> epwm8_AQ:epwm8_aq_cmpa:w;
+    epwm8_CC:epwm8_cc_cmpb:e -> epwm8_AQ:epwm8_aq_cmpb:w;
+
+    epwm8_AQ:epwm8_aq_epwma:e -> epwm8_DB:epwm8_db_epwma_in:w
+    epwm8_DB:epwm8_db_epwma_out:e -> epwm8_PC:epwm8_pc_epwma_in:w
+    epwm8_PC:epwm8_pc_epwma_out:e -> epwm8_TZ:epwm8_tz_epwma_in:w
+
+    
+    epwm8_AQ:epwm8_aq_epwmb:e -> epwm8_DB:epwm8_db_epwmb_in:w
+    epwm8_DB:epwm8_db_epwmb_out:e -> epwm8_PC:epwm8_pc_epwmb_in:w
+    epwm8_PC:epwm8_pc_epwmb_out:e -> epwm8_TZ:epwm8_tz_epwmb_in:w
+
+
+ 	epwm8_TB:epwm8_syncout -> SYNCOUT_EPWM8
+
+    epwm8_TZ:epwm8_tz_epwma_out:e -> GPIO14
+    epwm8_TZ:epwm8_tz_epwmb_out:e -> GPIO15
+       
+    subgraph cluster_epwm9 {
+        label = "EPWM9 = DAB_PRIM2";
+        color=red;
+        
+        
+        epwm9_TB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                        <TR><TD PORT='' COLSPAN='3'><br/><br/>  Time Base <br/><br/><br/></TD></TR>
+                        <TR><TD PORT='epwm9_syncin'>SYNCIN</TD><TD ROWSPAN='3'>Emulation Mode: EPWM_EMULATION_STOP_AFTER_NEXT_TB<br align="left" />Time Base Clock Divider: EPWM_CLOCK_DIVIDER_1<br align="left" />High Speed Clock Divider: EPWM_HSCLOCK_DIVIDER_1<br align="left" />Time Base Period Load Mode: EPWM_PERIOD_SHADOW_LOAD<br align="left" />Time Base Period Load Event: EPWM_SHADOW_LOAD_MODE_COUNTER_ZERO<br align="left" />Time Base Period: 500<br align="left" />Time Base Period Link: EPWM_LINK_WITH_EPWM_8<br align="left" />Enable Time Base Period Global Load: false<br align="left" />Initial Counter Value: 0<br align="left" />Counter Mode: EPWM_COUNTER_MODE_UP_DOWN<br align="left" />Counter Mode After Sync: EPWM_COUNT_MODE_UP_AFTER_SYNC<br align="left" />Enable Phase Shift Load: true<br align="left" />Phase Shift Value: 2<br align="left" />Force a Sync Pulse: false<br align="left" />Sync In Pulse Source: EPWM_SYNC_IN_PULSE_SRC_SYNCOUT_EPWM8<br align="left" />Sync Out Pulse: <br align="left" />One-Shot Sync Out Trigger: EPWM_OSHT_SYNC_OUT_TRIG_SYNC<br align="left" />EPWMxSYNCPER Source Select: HRPWM_PWMSYNC_SOURCE_PERIOD<br align="left" /></TD><TD PORT='epwm9_tb_prd'>CTR==PRD</TD></TR>
+                        <TR><TD PORT='epwm9_syncout'>SYNCOUT</TD><TD COL='3' PORT='epwm9_tb_zero'>CTR==ZRO</TD></TR>
+                        <TR><TD PORT=''>Digital Compare sync</TD><TD COL='3' PORT='epwm9_tb_dir'>CTR_DIR</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+        
+        epwm9_DC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_dc_title' COLSPAN='3'><br/><br/>  EPWM Digital Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm9_dcah'>DCAH</TD><TD ROWSPAN='12'>Digital Compare A High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A High): <br align="left" />Digital Compare A Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A Low): <br align="left" />Condition For Digital Compare output 1 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCAEVT1): false<br align="left" />Generate SYNCOUT (DCAEVT1): false<br align="left" />Synch Mode (DCAEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCAEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare B High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B High): <br align="left" />Digital Compare B Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B Low): <br align="left" />Condition For Digital Compare output 1 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCBEVT1): false<br align="left" />Generate SYNCOUT (DCBEVT1): false<br align="left" />Synch Mode (DCBEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCBEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare Filter Input (DCEVTFILT event source): EPWM_DC_WINDOW_SOURCE_DCAEVT1<br align="left" />Use Blanking Window: false<br align="left" />Blanking Window Start Event: EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />Blanking Window Offset from the Start Event: 0<br align="left" />Blanking Window Length: 0<br align="left" />Invert Blanking Window: false<br align="left" />Use DC Counter Capture: false<br align="left" />Enable DC Counter Capture Shadow Mode: false<br align="left" />DC Counter Capture Re-Enable Event\Shadow Load Event (Blanking Window Start Event): EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />DC Counter Capture Independent Pulse Selection: false<br align="left" />Use Edge Filter: false<br align="left" />Edge Filter Mode: EPWM_DC_EDGEFILT_MODE_RISING<br align="left" />Edge Filter Edge Count: EPWM_DC_EDGEFILT_EDGECNT_0<br align="left" />Enable Edge Filter Reset/Enable Valley Capture: false<br align="left" />Edge Filter Counter Reset/Valley Capture Signal Source: EPWM_VALLEY_TRIGGER_EVENT_SOFTWARE<br align="left" />Start Valley Capture Logic: false<br align="left" />Start Valley Capture: 0<br align="left" />Stop Valley Capture: 0<br align="left" />Select the delayed output (by HWDELVAL) of the Edge Filter: false<br align="left" />SWVDELVAL (software valley delay value): 0<br align="left" />Valley Delay Divider: EPWM_VALLEY_DELAY_MODE_SW_DELAY<br align="left" /></TD><TD COL='3' PORT='epwm9_dcaevt1frc'>DCAEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm9_dcal'>DCAL</TD>                                 <TD COL='3' PORT=''>DCAEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCAEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.soc</TD></TR>
+                       <TR><TD PORT='epwm9_dcbh'>DCBH</TD>                                 <TD PORT='epwm9_dcbevt1frc'>DCBEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm9_dcbl'>DCBL</TD>                                 <TD PORT=''>DCBEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCBEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.soc</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+
+        epwm9_CC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_cc_title' COLSPAN='3'><br/><br/>  EPWM Counter Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='' COLSPAN='2' ROWSPAN='4'>Counter Compare A (CMPA): 250<br align="left" />Enable Counter Compare A (CMPA) Global Load: false<br align="left" />Enable Shadow Counter Compare A (CMPA): true<br align="left" />Counter Compare A Shadow Load Event: EPWM_COMP_LOAD_ON_SYNC_ONLY<br align="left" />Counter Compare A (CMPA) Link: EPWM_LINK_WITH_EPWM_8<br align="left" />Counter Compare B (CMPB): 0<br align="left" />Enable Counter Compare B (CMPB) Global Load: false<br align="left" />Enable Shadow Counter Compare B (CMPB): true<br align="left" />Counter Compare B Shadow Load Event: EPWM_COMP_LOAD_ON_SYNC_ONLY<br align="left" />Counter Compare B (CMPB) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare C (CMPC): 0<br align="left" />Enable Counter Compare C (CMPC) Global Load: false<br align="left" />Enable Shadow Counter Compare C (CMPC): true<br align="left" />Counter Compare C Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare C (CMPC) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare D (CMPD): 0<br align="left" />Enable Counter Compare D (CMPD) Global Load: false<br align="left" />Enable Shadow Counter Compare D (CMPD): true<br align="left" />Counter Compare D Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare D (CMPD) Link: EPWM_LINK_WITH_DISABLE<br align="left" /></TD><TD COL='3' PORT='epwm9_cc_cmpa'>CTR == CMPA</TD></TR>
+                       <TR><TD COL='3' PORT='epwm9_cc_cmpb'>CTR == CMPB</TD></TR>
+                       <TR><TD COL='3' PORT='epwm9_cc_cmpc'>CTR == CMPC</TD></TR>
+                       <TR><TD COL='3' PORT='epwm9_cc_cmpd'>CTR == CMPD</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm9_AQ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_aq_title' COLSPAN='3'><br/><br/>  EPWM Action Qualifier<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm9_aq_prd'>PRD</TD><TD PORT='' ROWSPAN='7'>Enable Continuous SW Force Global Load: false<br align="left" />Continuous SW Force Shadow Mode: EPWM_AQ_SW_SH_LOAD_ON_CNTR_ZERO<br align="left" />T1 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />T2 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />ePWMxA Global Load Enable: false<br align="left" />ePWMxA Shadow Mode Enable: true<br align="left" />ePWMxA Shadow Load Event: EPWM_AQ_LOAD_ON_CNTR_ZERO<br align="left" />ePWMxA One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxA  Time base counter equals zero: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter equals period: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Global Load Enable: true<br align="left" />ePWMxB Shadow Mode Enable: true<br align="left" />ePWMxB Shadow Load Event: EPWM_AQ_LOAD_ON_SYNC_ONLY<br align="left" />ePWMxB One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxB  Time base counter equals zero: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter equals period: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" /></TD><TD COL='3' PORT='epwm9_aq_epwma'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm9_aq_zero'>ZERO</TD>                                    <TD COL='3' PORT='epwm9_aq_epwmb'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm9_aq_dir'>DIR</TD>                                    </TR>
+                       <TR><TD PORT='epwm9_aq_t1'>T1</TD>                                    </TR>
+                       <TR><TD PORT='epwm9_aq_t2'>T2</TD>                                    </TR>
+                       <TR><TD PORT='epwm9_aq_cmpa'>CMPA</TD>                                    </TR>
+                       <TR><TD PORT='epwm9_aq_cmpb'>CMPB</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm9_DB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_db_title' COLSPAN='3'><br/><br/>  EPWM Deadband<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm9_db_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Active High: undefined<br align="left" />Active Low: undefined<br align="left" />Active High Complementary: undefined<br align="left" />Active Low Complementary: undefined<br align="left" />Dual Edge Delay Mode: undefined<br align="left" />Rising Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Falling Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Rising Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_HIGH<br align="left" />Falling Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_LOW<br align="left" />Enable Rising Edge Delay: true<br align="left" />RED Shadow Load Event: EPWM_RED_LOAD_ON_CNTR_ZERO<br align="left" />Rising Edge Delay Value: 16380<br align="left" />Enable Falling Edge Delay: true<br align="left" />FED Shadow Load Event: EPWM_FED_LOAD_ON_CNTR_ZERO<br align="left" />Falling Edge Delay Value: 16380<br align="left" />Swap Output for EPWMxA: false<br align="left" />Swap Output for EPWMxB: false<br align="left" />Enable Deadband Control Global Load: false<br align="left" />Deadband Control Shadow Load Event: EPWM_DB_LOAD_ON_CNTR_ZERO<br align="left" />Enable Deadband Control Shadow Mode: false<br align="left" />Enable RED Global Load: false<br align="left" />Enable RED Shadow Mode: false<br align="left" />Enable FED Global Load: false<br align="left" />Enable FED Shadow Mode: false<br align="left" />Dead Band Counter Clock Rate: EPWM_DB_COUNTER_CLOCK_FULL_CYCLE<br align="left" /></TD><TD COL='3' PORT='epwm9_db_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm9_db_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm9_db_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm9_PC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_pc_title' COLSPAN='3'><br/><br/>  EPWM Chopper<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm9_pc_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Use Chopper: false<br align="left" />Chopper Duty Cycle: 0<br align="left" />Chopper Frequency: 0<br align="left" />Chopper First Pulse Width: 0<br align="left" /></TD><TD COL='3' PORT='epwm9_pc_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm9_pc_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm9_pc_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm9_TZ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_tz_title' COLSPAN='3'><br/><br/>  EPWM Trip-Zone<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm9_tz_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='4'>Use Advanced EPWM Trip Zone Actions: false<br align="left" />TZA Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZB_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />One-Shot Source: <br align="left" />CBC Source: <br align="left" />CBC Latch Clear Signal: EPWM_TZ_CBC_PULSE_CLR_CNTR_ZERO<br align="left" />TZ Interrupt Source (ORed): <br align="left" />Register Interrupt Handler: false<br align="left" /></TD><TD COL='3' PORT='epwm9_tz_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm9_tz_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm9_tz_epwmb_out'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm9_tz_int'>TZINT</TD>                                    </TR>
+                       <TR><TD PORT='epwm9_tz_dcforce'>Digital Compare force</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm9_ET [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm9_et_title' COLSPAN='3'><br/><br/>  EPWM Event Trigger<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm9_et_tb'>Timebase Signals</TD><TD PORT='' ROWSPAN='3'>Enable EPWM Interrupt: false<br align="left" />Register Interrupt Handler: false<br align="left" />Interrupt Event Sources: EPWM_INT_TBCTR_DISABLED<br align="left" />Interrupt Event Count: 0<br align="left" />Interrupt Event Count Initial Value Load Enable: false<br align="left" />Interrupt Event Count Initial Value: 0<br align="left" />Force Interrupt Event Count Initial Value: false<br align="left" />SOCA Trigger Enable: false<br align="left" />SOCA Trigger Source: EPWM_SOC_DCxEVT1<br align="left" />SOCA Trigger Event Count: 0<br align="left" />SOCA Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCA Trigger Event Count Initial Value: 0<br align="left" />Force SOCA Trigger Event Count Initial Value: false<br align="left" />SOCB Trigger Enable: false<br align="left" />SOCB Trigger Source: EPWM_SOC_DCxEVT1<br align="left" />SOCB Trigger Event Count: 0<br align="left" />SOCB Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCB Trigger Event Count Initial Value: 0<br align="left" />Force SOCB Trigger Event Count Initial Value: false<br align="left" /></TD><TD COL='3' PORT='epwm9_et_int'>INT</TD></TR>
+                       <TR><TD PORT='epwm9_et_cc'>Counter Compare Signals</TD>                                    <TD COL='3' PORT='epwm9_et_soca'>SOCA</TD></TR>
+                       <TR><TD PORT='epwm9_et_dc'>Digital Compare Signals</TD>                                    <TD COL='3' PORT='epwm9_et_socb'>SOCB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        {rank=same epwm9_TB; epwm9_CC};
+        {rank=same epwm9_TZ; epwm9_DC};
+        {rank=same epwm9_DB; epwm9_ET};
+    }
+
+    epwm9_TB:s -> epwm9_CC:n [label="TBCTR"];
+    epwm9_DC:n -> epwm9_TZ:epwm9_tz_dcforce:s;
+
+
+    epwm9_TB:epwm9_tb_prd:e -> epwm9_AQ:epwm9_aq_prd:w;
+    epwm9_TB:epwm9_tb_zero:e -> epwm9_AQ:epwm9_aq_zero:w;
+    epwm9_TB:epwm9_tb_dir:e -> epwm9_AQ:epwm9_aq_dir:w;
+    epwm9_CC:epwm9_cc_cmpa:e -> epwm9_AQ:epwm9_aq_cmpa:w;
+    epwm9_CC:epwm9_cc_cmpb:e -> epwm9_AQ:epwm9_aq_cmpb:w;
+
+    epwm9_AQ:epwm9_aq_epwma:e -> epwm9_DB:epwm9_db_epwma_in:w
+    epwm9_DB:epwm9_db_epwma_out:e -> epwm9_PC:epwm9_pc_epwma_in:w
+    epwm9_PC:epwm9_pc_epwma_out:e -> epwm9_TZ:epwm9_tz_epwma_in:w
+
+    
+    epwm9_AQ:epwm9_aq_epwmb:e -> epwm9_DB:epwm9_db_epwmb_in:w
+    epwm9_DB:epwm9_db_epwmb_out:e -> epwm9_PC:epwm9_pc_epwmb_in:w
+    epwm9_PC:epwm9_pc_epwmb_out:e -> epwm9_TZ:epwm9_tz_epwmb_in:w
+
+
+ 	epwm9_TB:epwm9_syncout -> SYNCOUT_EPWM9
+
+    epwm9_TZ:epwm9_tz_epwma_out:e -> GPIO16
+    epwm9_TZ:epwm9_tz_epwmb_out:e -> GPIO17
+       
+    subgraph cluster_epwm10 {
+        label = "EPWM10 = DAB_SEC1";
+        color=red;
+        
+        
+        epwm10_TB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                        <TR><TD PORT='' COLSPAN='3'><br/><br/>  Time Base <br/><br/><br/></TD></TR>
+                        <TR><TD PORT='epwm10_syncin'>SYNCIN</TD><TD ROWSPAN='3'>Emulation Mode: EPWM_EMULATION_STOP_AFTER_NEXT_TB<br align="left" />Time Base Clock Divider: EPWM_CLOCK_DIVIDER_1<br align="left" />High Speed Clock Divider: EPWM_HSCLOCK_DIVIDER_1<br align="left" />Time Base Period Load Mode: EPWM_PERIOD_SHADOW_LOAD<br align="left" />Time Base Period Load Event: EPWM_SHADOW_LOAD_MODE_COUNTER_ZERO<br align="left" />Time Base Period: 500<br align="left" />Time Base Period Link: EPWM_LINK_WITH_EPWM_8<br align="left" />Enable Time Base Period Global Load: false<br align="left" />Initial Counter Value: 0<br align="left" />Counter Mode: EPWM_COUNTER_MODE_UP_DOWN<br align="left" />Counter Mode After Sync: EPWM_COUNT_MODE_UP_AFTER_SYNC<br align="left" />Enable Phase Shift Load: true<br align="left" />Phase Shift Value: 2<br align="left" />Force a Sync Pulse: false<br align="left" />Sync In Pulse Source: EPWM_SYNC_IN_PULSE_SRC_SYNCOUT_EPWM8<br align="left" />Sync Out Pulse: <br align="left" />One-Shot Sync Out Trigger: EPWM_OSHT_SYNC_OUT_TRIG_SYNC<br align="left" />EPWMxSYNCPER Source Select: HRPWM_PWMSYNC_SOURCE_PERIOD<br align="left" /></TD><TD PORT='epwm10_tb_prd'>CTR==PRD</TD></TR>
+                        <TR><TD PORT='epwm10_syncout'>SYNCOUT</TD><TD COL='3' PORT='epwm10_tb_zero'>CTR==ZRO</TD></TR>
+                        <TR><TD PORT=''>Digital Compare sync</TD><TD COL='3' PORT='epwm10_tb_dir'>CTR_DIR</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+        
+        epwm10_DC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_dc_title' COLSPAN='3'><br/><br/>  EPWM Digital Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm10_dcah'>DCAH</TD><TD ROWSPAN='12'>Digital Compare A High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A High): <br align="left" />Digital Compare A Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A Low): <br align="left" />Condition For Digital Compare output 1 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCAEVT1): false<br align="left" />Generate SYNCOUT (DCAEVT1): false<br align="left" />Synch Mode (DCAEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCAEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare B High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B High): <br align="left" />Digital Compare B Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B Low): <br align="left" />Condition For Digital Compare output 1 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCBEVT1): false<br align="left" />Generate SYNCOUT (DCBEVT1): false<br align="left" />Synch Mode (DCBEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCBEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare Filter Input (DCEVTFILT event source): EPWM_DC_WINDOW_SOURCE_DCAEVT1<br align="left" />Use Blanking Window: false<br align="left" />Blanking Window Start Event: EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />Blanking Window Offset from the Start Event: 0<br align="left" />Blanking Window Length: 0<br align="left" />Invert Blanking Window: false<br align="left" />Use DC Counter Capture: false<br align="left" />Enable DC Counter Capture Shadow Mode: false<br align="left" />DC Counter Capture Re-Enable Event\Shadow Load Event (Blanking Window Start Event): EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />DC Counter Capture Independent Pulse Selection: false<br align="left" />Use Edge Filter: false<br align="left" />Edge Filter Mode: EPWM_DC_EDGEFILT_MODE_RISING<br align="left" />Edge Filter Edge Count: EPWM_DC_EDGEFILT_EDGECNT_0<br align="left" />Enable Edge Filter Reset/Enable Valley Capture: false<br align="left" />Edge Filter Counter Reset/Valley Capture Signal Source: EPWM_VALLEY_TRIGGER_EVENT_SOFTWARE<br align="left" />Start Valley Capture Logic: false<br align="left" />Start Valley Capture: 0<br align="left" />Stop Valley Capture: 0<br align="left" />Select the delayed output (by HWDELVAL) of the Edge Filter: false<br align="left" />SWVDELVAL (software valley delay value): 0<br align="left" />Valley Delay Divider: EPWM_VALLEY_DELAY_MODE_SW_DELAY<br align="left" /></TD><TD COL='3' PORT='epwm10_dcaevt1frc'>DCAEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm10_dcal'>DCAL</TD>                                 <TD COL='3' PORT=''>DCAEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCAEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.soc</TD></TR>
+                       <TR><TD PORT='epwm10_dcbh'>DCBH</TD>                                 <TD PORT='epwm10_dcbevt1frc'>DCBEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm10_dcbl'>DCBL</TD>                                 <TD PORT=''>DCBEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCBEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.soc</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+
+        epwm10_CC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_cc_title' COLSPAN='3'><br/><br/>  EPWM Counter Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='' COLSPAN='2' ROWSPAN='4'>Counter Compare A (CMPA): 250<br align="left" />Enable Counter Compare A (CMPA) Global Load: false<br align="left" />Enable Shadow Counter Compare A (CMPA): true<br align="left" />Counter Compare A Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare A (CMPA) Link: EPWM_LINK_WITH_EPWM_8<br align="left" />Counter Compare B (CMPB): 0<br align="left" />Enable Counter Compare B (CMPB) Global Load: false<br align="left" />Enable Shadow Counter Compare B (CMPB): true<br align="left" />Counter Compare B Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare B (CMPB) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare C (CMPC): 0<br align="left" />Enable Counter Compare C (CMPC) Global Load: false<br align="left" />Enable Shadow Counter Compare C (CMPC): true<br align="left" />Counter Compare C Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare C (CMPC) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare D (CMPD): 0<br align="left" />Enable Counter Compare D (CMPD) Global Load: false<br align="left" />Enable Shadow Counter Compare D (CMPD): true<br align="left" />Counter Compare D Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare D (CMPD) Link: EPWM_LINK_WITH_DISABLE<br align="left" /></TD><TD COL='3' PORT='epwm10_cc_cmpa'>CTR == CMPA</TD></TR>
+                       <TR><TD COL='3' PORT='epwm10_cc_cmpb'>CTR == CMPB</TD></TR>
+                       <TR><TD COL='3' PORT='epwm10_cc_cmpc'>CTR == CMPC</TD></TR>
+                       <TR><TD COL='3' PORT='epwm10_cc_cmpd'>CTR == CMPD</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm10_AQ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_aq_title' COLSPAN='3'><br/><br/>  EPWM Action Qualifier<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm10_aq_prd'>PRD</TD><TD PORT='' ROWSPAN='7'>Enable Continuous SW Force Global Load: false<br align="left" />Continuous SW Force Shadow Mode: EPWM_AQ_SW_SH_LOAD_ON_CNTR_ZERO<br align="left" />T1 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />T2 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />ePWMxA Global Load Enable: false<br align="left" />ePWMxA Shadow Mode Enable: true<br align="left" />ePWMxA Shadow Load Event: EPWM_AQ_LOAD_ON_SYNC_ONLY<br align="left" />ePWMxA One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxA  Time base counter equals zero: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter equals period: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Global Load Enable: true<br align="left" />ePWMxB Shadow Mode Enable: true<br align="left" />ePWMxB Shadow Load Event: EPWM_AQ_LOAD_ON_SYNC_ONLY<br align="left" />ePWMxB One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxB  Time base counter equals zero: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter equals period: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" /></TD><TD COL='3' PORT='epwm10_aq_epwma'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm10_aq_zero'>ZERO</TD>                                    <TD COL='3' PORT='epwm10_aq_epwmb'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm10_aq_dir'>DIR</TD>                                    </TR>
+                       <TR><TD PORT='epwm10_aq_t1'>T1</TD>                                    </TR>
+                       <TR><TD PORT='epwm10_aq_t2'>T2</TD>                                    </TR>
+                       <TR><TD PORT='epwm10_aq_cmpa'>CMPA</TD>                                    </TR>
+                       <TR><TD PORT='epwm10_aq_cmpb'>CMPB</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm10_DB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_db_title' COLSPAN='3'><br/><br/>  EPWM Deadband<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm10_db_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Active High: undefined<br align="left" />Active Low: undefined<br align="left" />Active High Complementary: undefined<br align="left" />Active Low Complementary: undefined<br align="left" />Dual Edge Delay Mode: undefined<br align="left" />Rising Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Falling Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Rising Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_HIGH<br align="left" />Falling Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_LOW<br align="left" />Enable Rising Edge Delay: true<br align="left" />RED Shadow Load Event: EPWM_RED_LOAD_ON_CNTR_ZERO<br align="left" />Rising Edge Delay Value: 16380<br align="left" />Enable Falling Edge Delay: true<br align="left" />FED Shadow Load Event: EPWM_FED_LOAD_ON_CNTR_ZERO<br align="left" />Falling Edge Delay Value: 16380<br align="left" />Swap Output for EPWMxA: false<br align="left" />Swap Output for EPWMxB: false<br align="left" />Enable Deadband Control Global Load: false<br align="left" />Deadband Control Shadow Load Event: EPWM_DB_LOAD_ON_CNTR_ZERO<br align="left" />Enable Deadband Control Shadow Mode: true<br align="left" />Enable RED Global Load: false<br align="left" />Enable RED Shadow Mode: true<br align="left" />Enable FED Global Load: false<br align="left" />Enable FED Shadow Mode: true<br align="left" />Dead Band Counter Clock Rate: EPWM_DB_COUNTER_CLOCK_FULL_CYCLE<br align="left" /></TD><TD COL='3' PORT='epwm10_db_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm10_db_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm10_db_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm10_PC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_pc_title' COLSPAN='3'><br/><br/>  EPWM Chopper<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm10_pc_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Use Chopper: false<br align="left" />Chopper Duty Cycle: 0<br align="left" />Chopper Frequency: 0<br align="left" />Chopper First Pulse Width: 0<br align="left" /></TD><TD COL='3' PORT='epwm10_pc_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm10_pc_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm10_pc_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm10_TZ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_tz_title' COLSPAN='3'><br/><br/>  EPWM Trip-Zone<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm10_tz_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='4'>Use Advanced EPWM Trip Zone Actions: false<br align="left" />TZA Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZB_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />One-Shot Source: <br align="left" />CBC Source: <br align="left" />CBC Latch Clear Signal: EPWM_TZ_CBC_PULSE_CLR_CNTR_ZERO<br align="left" />TZ Interrupt Source (ORed): <br align="left" />Register Interrupt Handler: false<br align="left" /></TD><TD COL='3' PORT='epwm10_tz_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm10_tz_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm10_tz_epwmb_out'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm10_tz_int'>TZINT</TD>                                    </TR>
+                       <TR><TD PORT='epwm10_tz_dcforce'>Digital Compare force</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm10_ET [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm10_et_title' COLSPAN='3'><br/><br/>  EPWM Event Trigger<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm10_et_tb'>Timebase Signals</TD><TD PORT='' ROWSPAN='3'>Enable EPWM Interrupt: false<br align="left" />Register Interrupt Handler: false<br align="left" />Interrupt Event Sources: EPWM_INT_TBCTR_DISABLED<br align="left" />Interrupt Event Count: 0<br align="left" />Interrupt Event Count Initial Value Load Enable: false<br align="left" />Interrupt Event Count Initial Value: 0<br align="left" />Force Interrupt Event Count Initial Value: false<br align="left" />SOCA Trigger Enable: false<br align="left" />SOCA Trigger Source: EPWM_SOC_DCxEVT1<br align="left" />SOCA Trigger Event Count: 0<br align="left" />SOCA Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCA Trigger Event Count Initial Value: 0<br align="left" />Force SOCA Trigger Event Count Initial Value: false<br align="left" />SOCB Trigger Enable: false<br align="left" />SOCB Trigger Source: EPWM_SOC_DCxEVT1<br align="left" />SOCB Trigger Event Count: 0<br align="left" />SOCB Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCB Trigger Event Count Initial Value: 0<br align="left" />Force SOCB Trigger Event Count Initial Value: false<br align="left" /></TD><TD COL='3' PORT='epwm10_et_int'>INT</TD></TR>
+                       <TR><TD PORT='epwm10_et_cc'>Counter Compare Signals</TD>                                    <TD COL='3' PORT='epwm10_et_soca'>SOCA</TD></TR>
+                       <TR><TD PORT='epwm10_et_dc'>Digital Compare Signals</TD>                                    <TD COL='3' PORT='epwm10_et_socb'>SOCB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        {rank=same epwm10_TB; epwm10_CC};
+        {rank=same epwm10_TZ; epwm10_DC};
+        {rank=same epwm10_DB; epwm10_ET};
+    }
+
+    epwm10_TB:s -> epwm10_CC:n [label="TBCTR"];
+    epwm10_DC:n -> epwm10_TZ:epwm10_tz_dcforce:s;
+
+
+    epwm10_TB:epwm10_tb_prd:e -> epwm10_AQ:epwm10_aq_prd:w;
+    epwm10_TB:epwm10_tb_zero:e -> epwm10_AQ:epwm10_aq_zero:w;
+    epwm10_TB:epwm10_tb_dir:e -> epwm10_AQ:epwm10_aq_dir:w;
+    epwm10_CC:epwm10_cc_cmpa:e -> epwm10_AQ:epwm10_aq_cmpa:w;
+    epwm10_CC:epwm10_cc_cmpb:e -> epwm10_AQ:epwm10_aq_cmpb:w;
+
+    epwm10_AQ:epwm10_aq_epwma:e -> epwm10_DB:epwm10_db_epwma_in:w
+    epwm10_DB:epwm10_db_epwma_out:e -> epwm10_PC:epwm10_pc_epwma_in:w
+    epwm10_PC:epwm10_pc_epwma_out:e -> epwm10_TZ:epwm10_tz_epwma_in:w
+
+    
+    epwm10_AQ:epwm10_aq_epwmb:e -> epwm10_DB:epwm10_db_epwmb_in:w
+    epwm10_DB:epwm10_db_epwmb_out:e -> epwm10_PC:epwm10_pc_epwmb_in:w
+    epwm10_PC:epwm10_pc_epwmb_out:e -> epwm10_TZ:epwm10_tz_epwmb_in:w
+
+
+ 	epwm10_TB:epwm10_syncout -> SYNCOUT_EPWM10
+
+    epwm10_TZ:epwm10_tz_epwma_out:e -> GPIO18
+    epwm10_TZ:epwm10_tz_epwmb_out:e -> GPIO19
+       
+    subgraph cluster_epwm11 {
+        label = "EPWM11 = DAB_SEC2";
+        color=red;
+        
+        
+        epwm11_TB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                        <TR><TD PORT='' COLSPAN='3'><br/><br/>  Time Base <br/><br/><br/></TD></TR>
+                        <TR><TD PORT='epwm11_syncin'>SYNCIN</TD><TD ROWSPAN='3'>Emulation Mode: EPWM_EMULATION_STOP_AFTER_NEXT_TB<br align="left" />Time Base Clock Divider: EPWM_CLOCK_DIVIDER_1<br align="left" />High Speed Clock Divider: EPWM_HSCLOCK_DIVIDER_1<br align="left" />Time Base Period Load Mode: EPWM_PERIOD_SHADOW_LOAD<br align="left" />Time Base Period Load Event: EPWM_SHADOW_LOAD_MODE_COUNTER_ZERO<br align="left" />Time Base Period: 500<br align="left" />Time Base Period Link: EPWM_LINK_WITH_DISABLE<br align="left" />Enable Time Base Period Global Load: false<br align="left" />Initial Counter Value: 0<br align="left" />Counter Mode: EPWM_COUNTER_MODE_UP_DOWN<br align="left" />Counter Mode After Sync: EPWM_COUNT_MODE_UP_AFTER_SYNC<br align="left" />Enable Phase Shift Load: true<br align="left" />Phase Shift Value: 2<br align="left" />Force a Sync Pulse: false<br align="left" />Sync In Pulse Source: EPWM_SYNC_IN_PULSE_SRC_SYNCOUT_EPWM8<br align="left" />Sync Out Pulse: <br align="left" />One-Shot Sync Out Trigger: EPWM_OSHT_SYNC_OUT_TRIG_SYNC<br align="left" />EPWMxSYNCPER Source Select: HRPWM_PWMSYNC_SOURCE_PERIOD<br align="left" /></TD><TD PORT='epwm11_tb_prd'>CTR==PRD</TD></TR>
+                        <TR><TD PORT='epwm11_syncout'>SYNCOUT</TD><TD COL='3' PORT='epwm11_tb_zero'>CTR==ZRO</TD></TR>
+                        <TR><TD PORT=''>Digital Compare sync</TD><TD COL='3' PORT='epwm11_tb_dir'>CTR_DIR</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+        
+        epwm11_DC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_dc_title' COLSPAN='3'><br/><br/>  EPWM Digital Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm11_dcah'>DCAH</TD><TD ROWSPAN='12'>Digital Compare A High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A High): <br align="left" />Digital Compare A Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare A Low): <br align="left" />Condition For Digital Compare output 1 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 A: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCAEVT1): false<br align="left" />Generate SYNCOUT (DCAEVT1): false<br align="left" />Synch Mode (DCAEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCAEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCAEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCAEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCAEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare B High: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B High): <br align="left" />Digital Compare B Low: EPWM_DC_TRIP_TRIPIN1<br align="left" />Combination Input Sources (Digital Compare B Low): <br align="left" />Condition For Digital Compare output 1 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Condition For Digital Compare output 2 B: EPWM_TZ_EVENT_DC_DISABLED<br align="left" />Generate ADC SOC (DCBEVT1): false<br align="left" />Generate SYNCOUT (DCBEVT1): false<br align="left" />Synch Mode (DCBEVT1): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT1): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT1): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT1): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Synch Mode (DCBEVT2): EPWM_DC_EVENT_INPUT_SYNCED<br align="left" />Signal Source (DCBEVT2): EPWM_DC_EVENT_SOURCE_ORIG_SIGNAL<br align="left" />CBC Latch Mode (DCBEVT2): EPWM_DC_CBC_LATCH_DISABLED<br align="left" />CBC Latch Clear Event (DCBEVT2): EPWM_DC_CBC_LATCH_CLR_CNTR_ZERO<br align="left" />Digital Compare Filter Input (DCEVTFILT event source): EPWM_DC_WINDOW_SOURCE_DCAEVT1<br align="left" />Use Blanking Window: false<br align="left" />Blanking Window Start Event: EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />Blanking Window Offset from the Start Event: 0<br align="left" />Blanking Window Length: 0<br align="left" />Invert Blanking Window: false<br align="left" />Use DC Counter Capture: false<br align="left" />Enable DC Counter Capture Shadow Mode: false<br align="left" />DC Counter Capture Re-Enable Event\Shadow Load Event (Blanking Window Start Event): EPWM_DC_WINDOW_START_TBCTR_PERIOD<br align="left" />DC Counter Capture Independent Pulse Selection: false<br align="left" />Use Edge Filter: false<br align="left" />Edge Filter Mode: EPWM_DC_EDGEFILT_MODE_RISING<br align="left" />Edge Filter Edge Count: EPWM_DC_EDGEFILT_EDGECNT_0<br align="left" />Enable Edge Filter Reset/Enable Valley Capture: false<br align="left" />Edge Filter Counter Reset/Valley Capture Signal Source: EPWM_VALLEY_TRIGGER_EVENT_SOFTWARE<br align="left" />Start Valley Capture Logic: false<br align="left" />Start Valley Capture: 0<br align="left" />Stop Valley Capture: 0<br align="left" />Select the delayed output (by HWDELVAL) of the Edge Filter: false<br align="left" />SWVDELVAL (software valley delay value): 0<br align="left" />Valley Delay Divider: EPWM_VALLEY_DELAY_MODE_SW_DELAY<br align="left" /></TD><TD COL='3' PORT='epwm11_dcaevt1frc'>DCAEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm11_dcal'>DCAL</TD>                                 <TD COL='3' PORT=''>DCAEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCAEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCAEVT1.soc</TD></TR>
+                       <TR><TD PORT='epwm11_dcbh'>DCBH</TD>                                 <TD PORT='epwm11_dcbevt1frc'>DCBEVT1.force</TD></TR>
+                       <TR><TD PORT='epwm11_dcbl'>DCBL</TD>                                 <TD PORT=''>DCBEVT2.force</TD></TR>
+                       <TR><TD ROWSPAN='4'></TD>                                                        <TD COL='3' PORT=''>DCBEVT1.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT2.sync</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.inter</TD></TR>
+                       <TR>                                                                             <TD COL='3' PORT=''>DCBEVT1.soc</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+        
+
+        epwm11_CC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_cc_title' COLSPAN='3'><br/><br/>  EPWM Counter Compare<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='' COLSPAN='2' ROWSPAN='4'>Counter Compare A (CMPA): 250<br align="left" />Enable Counter Compare A (CMPA) Global Load: false<br align="left" />Enable Shadow Counter Compare A (CMPA): true<br align="left" />Counter Compare A Shadow Load Event: EPWM_COMP_LOAD_ON_SYNC_ONLY<br align="left" />Counter Compare A (CMPA) Link: EPWM_LINK_WITH_EPWM_8<br align="left" />Counter Compare B (CMPB): 0<br align="left" />Enable Counter Compare B (CMPB) Global Load: false<br align="left" />Enable Shadow Counter Compare B (CMPB): true<br align="left" />Counter Compare B Shadow Load Event: EPWM_COMP_LOAD_ON_SYNC_ONLY<br align="left" />Counter Compare B (CMPB) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare C (CMPC): 0<br align="left" />Enable Counter Compare C (CMPC) Global Load: false<br align="left" />Enable Shadow Counter Compare C (CMPC): true<br align="left" />Counter Compare C Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare C (CMPC) Link: EPWM_LINK_WITH_DISABLE<br align="left" />Counter Compare D (CMPD): 0<br align="left" />Enable Counter Compare D (CMPD) Global Load: false<br align="left" />Enable Shadow Counter Compare D (CMPD): true<br align="left" />Counter Compare D Shadow Load Event: EPWM_COMP_LOAD_ON_CNTR_ZERO<br align="left" />Counter Compare D (CMPD) Link: EPWM_LINK_WITH_DISABLE<br align="left" /></TD><TD COL='3' PORT='epwm11_cc_cmpa'>CTR == CMPA</TD></TR>
+                       <TR><TD COL='3' PORT='epwm11_cc_cmpb'>CTR == CMPB</TD></TR>
+                       <TR><TD COL='3' PORT='epwm11_cc_cmpc'>CTR == CMPC</TD></TR>
+                       <TR><TD COL='3' PORT='epwm11_cc_cmpd'>CTR == CMPD</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm11_AQ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_aq_title' COLSPAN='3'><br/><br/>  EPWM Action Qualifier<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm11_aq_prd'>PRD</TD><TD PORT='' ROWSPAN='7'>Enable Continuous SW Force Global Load: false<br align="left" />Continuous SW Force Shadow Mode: EPWM_AQ_SW_SH_LOAD_ON_CNTR_ZERO<br align="left" />T1 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />T2 Trigger Source: EPWM_AQ_TRIGGER_EVENT_TRIG_DCA_1<br align="left" />ePWMxA Global Load Enable: false<br align="left" />ePWMxA Shadow Mode Enable: true<br align="left" />ePWMxA Shadow Load Event: EPWM_AQ_LOAD_ON_SYNC_ONLY<br align="left" />ePWMxA One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxA  Time base counter equals zero: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter equals period: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_LOW<br align="left" />ePWMxA  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_HIGH<br align="left" />ePWMxA  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxA  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Global Load Enable: true<br align="left" />ePWMxB Shadow Mode Enable: true<br align="left" />ePWMxB Shadow Load Event: EPWM_AQ_LOAD_ON_CNTR_ZERO<br align="left" />ePWMxB One-Time SW Force Action: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB Continuous SW Force Action: EPWM_AQ_SW_DISABLED<br align="left" />ePWMxB  Time base counter equals zero: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter equals period: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPA: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter up equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  Time base counter down equals COMPB: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T1 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count up: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" />ePWMxB  T2 event on count down: EPWM_AQ_OUTPUT_NO_CHANGE<br align="left" /></TD><TD COL='3' PORT='epwm11_aq_epwma'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm11_aq_zero'>ZERO</TD>                                    <TD COL='3' PORT='epwm11_aq_epwmb'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm11_aq_dir'>DIR</TD>                                    </TR>
+                       <TR><TD PORT='epwm11_aq_t1'>T1</TD>                                    </TR>
+                       <TR><TD PORT='epwm11_aq_t2'>T2</TD>                                    </TR>
+                       <TR><TD PORT='epwm11_aq_cmpa'>CMPA</TD>                                    </TR>
+                       <TR><TD PORT='epwm11_aq_cmpb'>CMPB</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm11_DB [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_db_title' COLSPAN='3'><br/><br/>  EPWM Deadband<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm11_db_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Active High: undefined<br align="left" />Active Low: undefined<br align="left" />Active High Complementary: undefined<br align="left" />Active Low Complementary: undefined<br align="left" />Dual Edge Delay Mode: undefined<br align="left" />Rising Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Falling Edge Delay Input: EPWM_DB_INPUT_EPWMA<br align="left" />Rising Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_HIGH<br align="left" />Falling Edge Delay Polarity: EPWM_DB_POLARITY_ACTIVE_LOW<br align="left" />Enable Rising Edge Delay: true<br align="left" />RED Shadow Load Event: EPWM_RED_LOAD_ON_CNTR_ZERO<br align="left" />Rising Edge Delay Value: 16380<br align="left" />Enable Falling Edge Delay: true<br align="left" />FED Shadow Load Event: EPWM_FED_LOAD_ON_CNTR_ZERO<br align="left" />Falling Edge Delay Value: 16380<br align="left" />Swap Output for EPWMxA: false<br align="left" />Swap Output for EPWMxB: false<br align="left" />Enable Deadband Control Global Load: false<br align="left" />Deadband Control Shadow Load Event: EPWM_DB_LOAD_ON_CNTR_ZERO<br align="left" />Enable Deadband Control Shadow Mode: false<br align="left" />Enable RED Global Load: false<br align="left" />Enable RED Shadow Mode: true<br align="left" />Enable FED Global Load: false<br align="left" />Enable FED Shadow Mode: true<br align="left" />Dead Band Counter Clock Rate: EPWM_DB_COUNTER_CLOCK_FULL_CYCLE<br align="left" /></TD><TD COL='3' PORT='epwm11_db_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm11_db_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm11_db_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm11_PC [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_pc_title' COLSPAN='3'><br/><br/>  EPWM Chopper<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm11_pc_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='2'>Use Chopper: false<br align="left" />Chopper Duty Cycle: 0<br align="left" />Chopper Frequency: 0<br align="left" />Chopper First Pulse Width: 0<br align="left" /></TD><TD COL='3' PORT='epwm11_pc_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm11_pc_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm11_pc_epwmb_out'>EPWMB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm11_TZ [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_tz_title' COLSPAN='3'><br/><br/>  EPWM Trip-Zone<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm11_tz_epwma_in'>EPWMA IN</TD><TD PORT='' ROWSPAN='4'>Use Advanced EPWM Trip Zone Actions: false<br align="left" />TZA Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCAEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT1 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />DCBEVT2 Event: EPWM_TZ_ACTION_HIGH_Z<br align="left" />TZB_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZB_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />TZA_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCAEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT1_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_U Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />DCBEVT2_D Event (Adv): EPWM_TZ_ADV_ACTION_HIGH_Z<br align="left" />One-Shot Source: <br align="left" />CBC Source: <br align="left" />CBC Latch Clear Signal: EPWM_TZ_CBC_PULSE_CLR_CNTR_ZERO<br align="left" />TZ Interrupt Source (ORed): <br align="left" />Register Interrupt Handler: false<br align="left" /></TD><TD COL='3' PORT='epwm11_tz_epwma_out'>EPWMA</TD></TR>
+                       <TR><TD PORT='epwm11_tz_epwmb_in'>EPWMB IN</TD>                                    <TD COL='3' PORT='epwm11_tz_epwmb_out'>EPWMB</TD></TR>
+                       <TR><TD PORT='epwm11_tz_int'>TZINT</TD>                                    </TR>
+                       <TR><TD PORT='epwm11_tz_dcforce'>Digital Compare force</TD>                                    </TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        epwm11_ET [label= <<TABLE BORDER='0' CELLBORDER='1' CELLPADDING='3' CELLSPACING='0'>
+                       <TR><TD PORT='epwm11_et_title' COLSPAN='3'><br/><br/>  EPWM Event Trigger<br/><br/><br/></TD></TR>
+                       <TR><TD PORT='epwm11_et_tb'>Timebase Signals</TD><TD PORT='' ROWSPAN='3'>Enable EPWM Interrupt: false<br align="left" />Register Interrupt Handler: false<br align="left" />Interrupt Event Sources: EPWM_INT_TBCTR_DISABLED<br align="left" />Interrupt Event Count: 0<br align="left" />Interrupt Event Count Initial Value Load Enable: false<br align="left" />Interrupt Event Count Initial Value: 0<br align="left" />Force Interrupt Event Count Initial Value: false<br align="left" />SOCA Trigger Enable: false<br align="left" />SOCA Trigger Source: EPWM_SOC_DCxEVT1<br align="left" />SOCA Trigger Event Count: 0<br align="left" />SOCA Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCA Trigger Event Count Initial Value: 0<br align="left" />Force SOCA Trigger Event Count Initial Value: false<br align="left" />SOCB Trigger Enable: false<br align="left" />SOCB Trigger Source: EPWM_SOC_DCxEVT1<br align="left" />SOCB Trigger Event Count: 0<br align="left" />SOCB Trigger Event Count Initial Value Load Enable: false<br align="left" />SOCB Trigger Event Count Initial Value: 0<br align="left" />Force SOCB Trigger Event Count Initial Value: false<br align="left" /></TD><TD COL='3' PORT='epwm11_et_int'>INT</TD></TR>
+                       <TR><TD PORT='epwm11_et_cc'>Counter Compare Signals</TD>                                    <TD COL='3' PORT='epwm11_et_soca'>SOCA</TD></TR>
+                       <TR><TD PORT='epwm11_et_dc'>Digital Compare Signals</TD>                                    <TD COL='3' PORT='epwm11_et_socb'>SOCB</TD></TR>
+                       </TABLE>> 
+               color=black shape=plaintext fillcolor="#F0F0F0" style=filled]
+
+
+        {rank=same epwm11_TB; epwm11_CC};
+        {rank=same epwm11_TZ; epwm11_DC};
+        {rank=same epwm11_DB; epwm11_ET};
+    }
+
+    epwm11_TB:s -> epwm11_CC:n [label="TBCTR"];
+    epwm11_DC:n -> epwm11_TZ:epwm11_tz_dcforce:s;
+
+
+    epwm11_TB:epwm11_tb_prd:e -> epwm11_AQ:epwm11_aq_prd:w;
+    epwm11_TB:epwm11_tb_zero:e -> epwm11_AQ:epwm11_aq_zero:w;
+    epwm11_TB:epwm11_tb_dir:e -> epwm11_AQ:epwm11_aq_dir:w;
+    epwm11_CC:epwm11_cc_cmpa:e -> epwm11_AQ:epwm11_aq_cmpa:w;
+    epwm11_CC:epwm11_cc_cmpb:e -> epwm11_AQ:epwm11_aq_cmpb:w;
+
+    epwm11_AQ:epwm11_aq_epwma:e -> epwm11_DB:epwm11_db_epwma_in:w
+    epwm11_DB:epwm11_db_epwma_out:e -> epwm11_PC:epwm11_pc_epwma_in:w
+    epwm11_PC:epwm11_pc_epwma_out:e -> epwm11_TZ:epwm11_tz_epwma_in:w
+
+    
+    epwm11_AQ:epwm11_aq_epwmb:e -> epwm11_DB:epwm11_db_epwmb_in:w
+    epwm11_DB:epwm11_db_epwmb_out:e -> epwm11_PC:epwm11_pc_epwmb_in:w
+    epwm11_PC:epwm11_pc_epwmb_out:e -> epwm11_TZ:epwm11_tz_epwmb_in:w
+
+
+ 	epwm11_TB:epwm11_syncout -> SYNCOUT_EPWM11
+
+    epwm11_TZ:epwm11_tz_epwma_out:e -> GPIO20
+    epwm11_TZ:epwm11_tz_epwmb_out:e -> GPIO21
+ 
+ 	
+    DISABLE -> epwm8_TB:epwm8_syncin
+    SYNCOUT_EPWM8 -> epwm9_TB:epwm9_syncin
+    SYNCOUT_EPWM8 -> epwm10_TB:epwm10_syncin
+    SYNCOUT_EPWM8 -> epwm11_TB:epwm11_syncin
+
+
+}
